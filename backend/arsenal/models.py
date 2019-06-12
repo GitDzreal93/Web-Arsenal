@@ -25,9 +25,9 @@ class Category(models.Model):
 
 
 class Website(models.Model):
-    name = models.CharField(unique=True, max_length=50, verbose_name="网站名称",
+    name = models.CharField(unique=True, max_length=20, verbose_name="网站名称",
                             help_text="网站名称")
-    desc = models.CharField(default="", max_length=200, null=True, blank=True, verbose_name="简介",
+    desc = models.CharField(default="", max_length=29, null=True, blank=True, verbose_name="简介",
                             help_text="简介")
     url = models.URLField(max_length=300, verbose_name="网站url", help_text="网站url")
     logo = models.ImageField(max_length=200, upload_to="logo", null=True, blank=True)
