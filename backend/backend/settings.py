@@ -95,7 +95,7 @@ DATABASES = {
     # dev
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': "db_hxproj",
+    #     'NAME': "arsenal",
     #     'USER': 'root',
     #     'PASSWORD': "root",
     #     'HOST': "127.0.0.1"
@@ -104,7 +104,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "arsenal",
-        'USER': 'root',
+        'USER': 'arsenal',
         'PASSWORD': "root",
         'HOST': "127.0.0.1"
     }
