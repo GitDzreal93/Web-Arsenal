@@ -3,28 +3,10 @@ from random import choice
 
 import xadmin
 from xadmin import views
-from xadmin.plugins.auth import UserAdmin
-from xadmin.layout import Fieldset, Main, Side, Row
-from django.utils.translation import ugettext as _
 
+from .util import generate_sn
 from .models import Category
 from .models import Website
-
-
-def generate_sn():
-    """
-    生成八位数字的SN
-    :return:
-    """
-    seeds = "abcdefghijklmnopqrstuvwsyz"
-    random_str = []
-    for i in range(8):
-        random_str.append(choice(seeds))
-    sn = "".join(random_str)
-    # 去重处理，保证 sn 唯一性
-    if Category.objects.filter(sn=sn):
-        generate_sn()
-    return sn
 
 
 class BaseSetting(object):
@@ -52,13 +34,12 @@ class CategoryAdmin(object):
     search_fields = ['id', 'sn', 'category', 'weight', 'is_show']
     list_filter = ['id', 'sn', 'category', 'weight', 'is_show']
     list_editable = ['category', 'weight', 'is_show']
-    sn = generate_sn()
     # prepopulated_fields = {'sn': generate_sn()}
     readonly_fields = ['sn']
     model_icon = 'fa fa-address-book-o'
 
     def save_models(self):
-        self.new_obj.sn = self.sn
+        self.new_obj.sn = generate_sn()
         self.new_obj.save()
 
 
