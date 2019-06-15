@@ -7,6 +7,7 @@ from xadmin import views
 from .util import generate_sn
 from .models import Category
 from .models import Website
+from .models import WebConfig
 
 
 class BaseSetting(object):
@@ -23,18 +24,26 @@ class GlobalSettings(object):
     def get_site_menu(self):
         return (
             {'title': '站点管理', 'menus': (
+                {'title': '全局配置', 'url': self.get_model_url(WebConfig, 'changelist')},
                 {'title': '类别管理', 'url': self.get_model_url(Category, 'changelist')},
                 {'title': '网址管理', 'url': self.get_model_url(Website, 'changelist')},
             )},
         )
 
 
+class WebConfigAdmin(object):
+    list_display = ['title', 'web_keywords', 'web_desc', 'main_mini_logo', 'main_big_logo', 'favicon', 'is_running']
+    search_fields = ['title', 'is_running']
+    list_filter = ['title', 'is_running']
+    list_editable = ['title', 'web_keywords', 'web_desc', 'main_mini_logo', 'main_big_logo', 'favicon', 'is_running']
+    model_icon = 'fa fa-address-book-o'
+
+
 class CategoryAdmin(object):
-    list_display = ['id', 'sn', 'category', 'weight', 'is_show']
-    search_fields = ['id', 'sn', 'category', 'weight', 'is_show']
-    list_filter = ['id', 'sn', 'category', 'weight', 'is_show']
+    list_display = ['id', 'sn', 'category', 'weight', 'is_show', 'webconfig']
+    search_fields = ['id', 'sn', 'category', 'weight', 'is_show', 'webconfig']
+    list_filter = ['id', 'sn', 'category', 'weight', 'is_show', 'webconfig']
     list_editable = ['category', 'weight', 'is_show']
-    # prepopulated_fields = {'sn': generate_sn()}
     readonly_fields = ['sn']
     model_icon = 'fa fa-address-book-o'
 
@@ -52,6 +61,7 @@ class WebsiteAdmin(object):
     relfield_style = 'fk-ajax'
 
 
+xadmin.site.register(WebConfig, WebConfigAdmin)
 xadmin.site.register(Category, CategoryAdmin)
 xadmin.site.register(Website, WebsiteAdmin)
 

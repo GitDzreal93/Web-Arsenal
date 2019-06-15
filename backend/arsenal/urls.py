@@ -24,6 +24,7 @@ router = DefaultRouter()
 # api
 router.register('api/v1/category', CategoryViewset, base_name="category_api")
 router.register('api/v1/website', WebsiteViewset, base_name="website_api")
+router.register('api/v1/webconfig', WebConfigViewset, base_name="webconfig_api")
 
 urlpatterns = [
     path('index/', IndexView.as_view(), name='index'),
