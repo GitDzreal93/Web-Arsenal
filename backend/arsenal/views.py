@@ -9,11 +9,18 @@ from django.views.generic.base import View
 from django_filters.rest_framework import DjangoFilterBackend
 from random import choice
 
-from .models import Category,Website
+from .models import Category,Website,WebConfig
 from .serializer import CategorySerializer,WebsiteSerializer
 
 
 # Create your views here.
+class WebConfigViewset(viewsets.ModelViewSet):
+    '''
+    网站配置
+    '''
+    queryset = WebConfig
+
+
 class CategoryViewset(viewsets.ModelViewSet):
     '''
     网站分类 API

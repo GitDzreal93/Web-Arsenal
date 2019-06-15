@@ -94,21 +94,21 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # }
 DATABASES = {
     # dev
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': "arsenal",
-    #     'USER': 'root',
-    #     'PASSWORD': "root",
-    #     'HOST': "127.0.0.1"
-    # }
-    # online
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "arsenal",
-        'USER': 'arsenal',
+        'USER': 'root',
         'PASSWORD': "root",
         'HOST': "127.0.0.1"
     }
+    # online
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': "arsenal",
+    #     'USER': 'arsenal',
+    #     'PASSWORD': "root",
+    #     'HOST': "127.0.0.1"
+    # }
 }
 
 # DRF配置
