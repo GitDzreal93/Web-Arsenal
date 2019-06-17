@@ -77,9 +77,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group no-margin"><label for="field-3" class="control-label">推荐理由（推荐网站简介）
-						</label> <textarea class="form-control autogrow" id="field-3"
-						                   placeholder="长度小于200个字符哟"
-						                   style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
+							</label> <textarea class="form-control autogrow" id="field-3"
+						                           placeholder="长度小于200个字符哟"
+						                           style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
 						</div>
 					</div>
 				</div>
@@ -87,6 +87,118 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
 				<button id="submitRecommend" type="button" class="btn btn-info">提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+{#顶部可以做项目介绍，承接商机#}
+<div class="settings-pane" style="">
+	<a href="#" data-toggle="settings-pane" data-animate="true">
+		×
+	</a>
+	<div class="settings-pane-inner with-animation visible">
+		<div class="row">
+			<div class="col-md-12 link-blocks-env" style="border: yellow solid">
+				<div class="links-block left-sep" style="border: red solid"><h4><span>墙裂推荐</span></h4>
+					<ul class="list-unstyled">
+						<li>
+							<div class="cbr-replaced cbr-checked cbr-primary">
+								<div class="cbr-input"><input type="checkbox" class="cbr cbr-done" checked="checked"
+								                              id="sp-chk1"></div>
+								<div class="cbr-state"><span></span></div>
+							</div>
+							<label for="sp-chk1">Messages</label></li>
+						<li>
+							<div class="cbr-replaced cbr-checked cbr-primary">
+								<div class="cbr-input"><input type="checkbox" class="cbr cbr-done" checked="checked"
+								                              id="sp-chk2"></div>
+								<div class="cbr-state"><span></span></div>
+							</div>
+							<label for="sp-chk2">Events</label></li>
+						<li>
+							<div class="cbr-replaced cbr-checked cbr-primary">
+								<div class="cbr-input"><input type="checkbox" class="cbr cbr-done" checked="checked"
+								                              id="sp-chk3"></div>
+								<div class="cbr-state"><span></span></div>
+							</div>
+							<label for="sp-chk3">Updates</label></li>
+						<li>
+							<div class="cbr-replaced cbr-checked cbr-primary">
+								<div class="cbr-input"><input type="checkbox" class="cbr cbr-done" checked="checked"
+								                              id="sp-chk4"></div>
+								<div class="cbr-state"><span></span></div>
+							</div>
+							<label for="sp-chk4">Server Uptime</label></li>
+					</ul>
+				</div>
+				<div class="links-block left-sep" style="border: red solid"><h4><a href="#"> <span>精选文章</span> </a></h4>
+					<ul class="list-unstyled">
+						<li><a href="#"> <i class="fa-angle-right"></i>
+							Support Center
+						</a></li>
+						<li><a href="#"> <i class="fa-angle-right"></i>
+							Submit a Ticket
+						</a></li>
+						<li><a href="#"> <i class="fa-angle-right"></i>
+							Domains Protocol
+						</a></li>
+						<li><a href="#"> <i class="fa-angle-right"></i>
+							Terms of Service
+						</a></li>
+					</ul>
+				</div>
+				<div class="links-block left-sep" style="border: red solid">
+					<h4>
+						<a href="#"> <span>微信公众号</span> </a>
+					</h4>
+					<div>
+						<div>
+							<img src="http://127.0.0.1:8000/media/qrcode/qrcode_for_gh_77d49878eea8_344.jpg"
+							     class="img-rounded" width="120">
+						</div>
+						<hr>
+						<h5>商务合作</h5>
+						<a href="javascript:;" onclick="$('#modal-4').modal('show', {backdrop: 'static'});"
+						   class="btn btn-secondary btn-icon btn-icon-standalone"><i class="fa-wechat"></i> <span>ADC931020</span></a>
+						<a href="javascript:;" onclick="$('#modal-4').modal('show', {backdrop: 'static'});"
+						   class="btn btn-secondary btn-icon btn-icon-standalone"><i class="fa-weibo"></i> <span>ADC931020</span></a>
+						{#						<a href="javascript:;" onclick="$('#modal-4').modal('show', {backdrop: 'static'});" class="btn btn-secondary btn-icon btn-icon-standalone"><i class="fa-github"></i> <span>ADC931020</span></a>#}
+
+						{#						<div class="fa-hover"><div class="icon-str"><i class="fa fa-wechat"></i> <span>ADC931020</span></div></div>#}
+					</div>
+					<ul class="list-unstyled">
+						{#						<li><img src="http://127.0.0.1:8000/media/qrcode/qrcode_for_gh_77d49878eea8_344.jpg"#}
+						{#						         class="img-rounded" width="120">#}
+						{#						</li>#}
+						<li><a href="#"> <i class="fa-angle-right"></i>
+							Submit a Ticket
+						</a></li>
+						<li><a href="#"> <i class="fa-angle-right"></i>
+							Domains Protocol
+						</a></li>
+						<li><a href="#"> <i class="fa-angle-right"></i>
+							Terms of Service
+						</a></li>
+					</ul>
+				</div>
+				<div class="links-block left-sep" style="border: red solid"><h4><a href="#"> <span>已收录酷站</span> </a>
+				</h4>
+					<ul class="list-unstyled">
+						<li><a href="#"> <i class="fa-angle-right"></i>
+							Support Center
+						</a></li>
+						<li><a href="#"> <i class="fa-angle-right"></i>
+							Submit a Ticket
+						</a></li>
+						<li><a href="#"> <i class="fa-angle-right"></i>
+							Domains Protocol
+						</a></li>
+						<li><a href="#"> <i class="fa-angle-right"></i>
+							Terms of Service
+						</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -128,10 +240,17 @@
 						<i class="fa-bars"></i>
 					</a>
 				</li>
+				<li class="settings-icon">
+					<a href="#" data-toggle="settings-pane" data-animate="true">
+						<i class="fa-info-circle"></i>
+						<span>猛料</span>
+					</a>
+				</li>
+
 			</ul>
-			{#			<a href="https://github.com/WebStackPage/WebStackPage.github.io" target="_blank"><img#}
-			{#					style="position: absolute; top: 0; right: 0; border: 0;"#}
-			{#					src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="GitHub"></a>#}
+			<a href="https://github.com/WebStackPage/WebStackPage.github.io" target="_blank"><img
+					style="position: absolute; top: 0; right: 0; border: 0;"
+					src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="GitHub"></a>
 		</nav>
 		<div id="website">
 			<!-- 插入专题 -->
@@ -196,11 +315,6 @@
 						<div class="col-md-4 links-block left-sep">
 							<h4><a href="#"> <span>已收录酷站</span> </a>
 							</h4>
-							<h2>
-								<span id="totalCount" class="label label-turquoise">520</span>
-								<small>个</small>
-							</h2>
-							<br>
 							<ul class="list-unstyled">
 								<li>
 									<h5 class="info">还有更赞的？</h5>
@@ -212,7 +326,6 @@
 									</a>
 								</li>
 							</ul>
-							<br>
 						</div>
 					</div>
 				</div>
@@ -333,7 +446,7 @@
                     categroryMenu += '<li><a href="#' + v.category + '" class="smooth"><i class="linecons-star"></i><span class="title">' + v.category + '</span></a></li>';
                     categroryTitle += '<h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="' + v.category + '"></i>' + v.category + '</h4><div id="' + v.sn + '" class="row"></div></br><hr>'
                 });
-                categroryMenu += '<li class="submit-tag"><a href=""><i class="linecons-heart"></i><span class="tooltip-blue hidden-collapsed">关于本站</span></a></li>';
+                categroryMenu += '<div class="submit-tag"><a href=""><i class="linecons-heart"></i><span class="tooltip-blue">关于本站</span><span class="label label-Primary pull-right hidden-collapsed">♥︎</span></a></div>';
                 $('#main-menu').html(categroryMenu);
                 $('#website').html(categroryTitle);
             }
@@ -348,8 +461,6 @@
             dataType: 'json',
             success: function (data) {
                 objWebsites = {};
-                var totalCount = data.length;
-                $('#totalCount').text(totalCount);
                 $.each(data, function (k, v) {
                     objWebsites['#' + v.category.sn] = '';
                 });
