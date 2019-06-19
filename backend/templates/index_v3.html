@@ -35,6 +35,63 @@
 
 <body class="page-body">
 <!-- skin-white -->
+{#调起微信加好友二维码#}
+<div class="modal fade" id="modal-1" data-backdrop="static" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header"><h4 class="modal-title">扫码加微信</h4></div>
+			<div class="modal-body">
+				<img src="http://127.0.0.1:8000/media/qrcode/IMG_9047.JPG"
+				     class="img-rounded" width="220">
+				<span>
+		商务合作请备注： 来源导航网站,咨询商务合作
+	</span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+{#调起用户反馈#}
+<div class="modal fade in" id="modal-2" aria-hidden="false" style="display: none; padding-right: 0px;">
+	<div class="modal-backdrop fade in" style="height: 696px;"></div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">我的推荐</h4></div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group"><label for="field-1" class="control-label">网站名称</label> <input
+								type="text" class="form-control" id="field-1" placeholder="推荐的网站名称，15字以内哟"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group"><label for="field-2" class="control-label">网址url</label> <input
+								type="text" class="form-control" id="field-2" placeholder="推荐的网址url，长度小于200个字符哟"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group no-margin"><label for="field-3" class="control-label">推荐理由（推荐网站简介）
+						</label> <textarea class="form-control autogrow" id="field-3"
+						                   placeholder="长度小于200个字符哟"
+						                   style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+				<button id="submitRecommend" type="button" class="btn btn-info">提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="page-container">
 	<div class="sidebar-menu toggle-others fixed">
 		<div class="sidebar-menu-inner">
@@ -76,14 +133,6 @@
 			{#					style="position: absolute; top: 0; right: 0; border: 0;"#}
 			{#					src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="GitHub"></a>#}
 		</nav>
-
-		<div class="row">
-			<div class="col-md-8">
-				<div class="input-group">
-					<form method="get" action="" enctype="application/x-www-form-urlencoded"> <input type="text" class="form-control input-lg" placeholder="Search..." name="s"> <button type="submit" class="btn-unstyled"> <i class="linecons-search"></i> </button> </form>
-				</div>
-			</div>
-		</div>
 		<div id="website">
 			<!-- 插入专题 -->
 			<!-- END 插入专题 -->
@@ -92,11 +141,83 @@
 		<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
 		<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
 		<!-- Or class "fixed" to  always fix the footer to the end of page -->
-
-		<!-- Add your copyright text here -->
 		<footer class="main-footer sticky footer-type-1">
 			<div class="footer-inner">
 				<!--底部广告区域-->
+				<div class="row text-center">
+					<div class="col-md-12 link-blocks-env">
+						<!-- 更多实用网站 -->
+						<div class="col-md-4 links-block left-sep"><h4><a href="#"> <span>更多实用网站</span> </a>
+						</h4>
+							<ul class="list-unstyled">
+								<li><a href="#"> <i class="fa-angle-right"></i>
+									Support Center
+								</a></li>
+								<li><a href="#"> <i class="fa-angle-right"></i>
+									Submit a Ticket
+								</a></li>
+								<li><a href="#"> <i class="fa-angle-right"></i>
+									Domains Protocol
+								</a></li>
+								<li><a href="#"> <i class="fa-angle-right"></i>
+									Terms of Service
+								</a></li>
+							</ul>
+						</div>
+
+						<!-- 商务区域 -->
+						<div class="col-md-4 links-block left-sep">
+							<h4>
+								<a href="#"> <span>微信公众号</span> </a>
+							</h4>
+							<div>
+								<div>
+									<img src="http://127.0.0.1:8000/media/qrcode/qrcode_for_gh_77d49878eea8_344.jpg"
+									     class="img-rounded" width="120">
+								</div>
+								<h5>商务合作</h5>
+								<ul class="list-unstyled">
+									<li>
+										<a href="javascript:;"
+										   onclick="$('#modal-1').modal('show', {backdrop: 'static'});"
+										   class="btn btn-secondary btn-icon btn-icon-standalone"><i
+												class="fa-wechat"></i> <span>ADC931020</span></a>
+									</li>
+									<li>
+										<a href="https://weibo.com/u/1773500372/home?wvr=5"
+										   class="btn btn-primary btn-icon btn-icon-standalone" target="_blank"><i
+												class="fa-weibo"></i> <span>@每天打开一个男朋友</span></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- 网站动态与反馈 -->
+						<div class="col-md-4 links-block left-sep">
+							<h4><a href="#"> <span>已收录酷站</span> </a>
+							</h4>
+							<h2>
+								<span id="totalCount" class="label label-turquoise">520</span>
+								<small>个</small>
+							</h2>
+							<br>
+							<ul class="list-unstyled">
+								<li>
+									<h5 class="info">还有更赞的？</h5>
+									<a href="javascript:;"
+									   onclick="$('#modal-2').modal('show', {backdrop: 'static'});"
+									   class="btn btn-blue btn-icon">
+										<i class="fa-edit"></i>
+										<span>我来推荐吧</span>
+									</a>
+								</li>
+							</ul>
+							<br>
+						</div>
+					</div>
+				</div>
+
+				<hr>
 				<!-- Add your copyright text here -->
 				<div class="footer-text">
 					&copy; 2017
@@ -112,7 +233,7 @@
 				</div>
 			</div>
 		</footer>
-</div>
+	</div>
 </div>
 <!-- 锚点平滑移动 -->
 <script type="text/javascript">
@@ -233,8 +354,12 @@
                     objWebsites['#' + v.category.sn] = '';
                 });
                 $.each(data, function (k, v) {
-                    let logoUrl = v.logo ? v.logo : "https://api.uixsj.cn/favicon/get.php?url=" + v.url;
-                    objWebsites['#' + v.category.sn] += '<div class="col-sm-3"><div class="xe-widget xe-conversations box2 label-info" onclick="window.open(\'' + v.url + '\', \'_blank\')" data-toggle="tooltip"data-placement="bottom" title="" data-original-title="' + v.url + '"><div class="xe-comment-entry"><a class="xe-user-img"><img src="' + logoUrl + '" class="img-responsive" width="40"></a><span class="label label-info" data-toggle="tooltip" data-placement="left" title=""data-original-title="Hello I am a Tooltip"></span><div class="xe-comment"><a href="#" class="xe-user-name overflowClip_1"><strong>' + v.name + '</strong></a><p class="overflowClip_2">' + v.desc + '</p></div></div></div></div>';
+                    if (v.logo !== null) {
+                        objWebsites['#' + v.category.sn] += '<div class="col-sm-3"><div class="xe-widget xe-conversations box2 label-info" onclick="window.open(\'' + v.url + '\', \'_blank\')" data-toggle="tooltip"data-placement="bottom" title="" data-original-title="' + v.url + '"><div class="xe-comment-entry"><a class="xe-user-img"><img src="' + v.logo + '" class="img-circle" width="40"></a><span class="label label-info" data-toggle="tooltip" data-placement="left" title=""data-original-title="Hello I am a Tooltip"></span><div class="xe-comment"><a href="#" class="xe-user-name overflowClip_1"><strong>' + v.name + '</strong></a><p class="overflowClip_2">' + v.desc + '</p></div></div></div></div>';
+                    } else {
+                        objWebsites['#' + v.category.sn] += '<div class="col-sm-3"><div class="xe-widget xe-conversations box2 label-info" onclick="window.open(\'' + v.url + '\', \'_blank\')" data-toggle="tooltip"data-placement="bottom" title="" data-original-title="' + v.url + '"><div class="xe-comment-entry"><a class="xe-user-img"></a><span class="label label-info" data-toggle="tooltip" data-placement="left" title=""data-original-title="Hello I am a Tooltip"></span><div class="xe-comment"><a href="#" class="xe-user-name overflowClip_1"><strong>' + v.name + '</strong></a><p class="overflowClip_2">' + v.desc + '</p></div></div></div></div>';
+                    }
+
                 });
                 $.each(objWebsites, function (k, v) {
                     $(k).html(v)
