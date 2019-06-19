@@ -78,12 +78,31 @@
 		</nav>
 
 		<div class="row">
-			<div class="col-md-8">
-				<div class="input-group">
-					<form method="get" action="" enctype="application/x-www-form-urlencoded"> <input type="text" class="form-control input-lg" placeholder="Search..." name="s"> <button type="submit" class="btn-unstyled"> <i class="linecons-search"></i> </button> </form>
-				</div>
+			<div class="col-md-12">
+				<ul id="searchType" class="left-links list-inline list-unstyled">
+					<li><input hidden="" type="radio" name="type" id="typeBaidu" value="https://www.baidu.com/s?wd="
+					           data-placeholder="百度一下"><label for="typeBaidu"><span
+							style="color:#116644">百度</span></label></li>
+					<li><input hidden="" type="radio" name="type" id="typeGithub" value="https://www.baidu.com/s?wd="
+					           data-placeholder="Github 搜索"><label for="typeGithub"><span
+							style="color:#116644">Github</span></label></li>
+					<li><input hidden="" type="radio" name="type" id="typeLinux" value="https://www.baidu.com/s?wd="
+					           data-placeholder="Linux 命令查询"><label for="typeLinux"><span
+							style="color:#116644">Linux</span></label></li>
+				</ul>
+			</div>
+			<div class="col-md-6">
+				<form id="searchForm" method="get" action="" enctype="application/x-www-form-urlencoded"
+				      target="_blank">
+					<div class="input-group">
+						<input id="searchInput" type="text" class="form-control" placeholder="">
+						<span class="input-group-btn"><button id="searchButton" class="btn btn-primary" type="submit">搜索</button></span>
+					</div>
+				</form>
 			</div>
 		</div>
+		<br>
+		<hr>
 		<div id="website">
 			<!-- 插入专题 -->
 			<!-- END 插入专题 -->
@@ -112,7 +131,7 @@
 				</div>
 			</div>
 		</footer>
-</div>
+	</div>
 </div>
 <!-- 锚点平滑移动 -->
 <script type="text/javascript">
@@ -123,7 +142,16 @@
         getCategory();
         //获取可展示的网站
         getWebsite();
-
+        $(document).on('click', '#searchType li input', function () {
+            var _this = $(this);
+            $('#searchForm').attr('action', _this.attr('value'));
+            $('#searchInput').attr('placeholder', _this.attr('data-placeholder'));
+        });
+{#        $(document).on('click', '#searchButton', function () {#}
+{#            var queryUrl = $('#searchForm').attr('action') + ;#}
+{#            $('#searchForm').attr('action', queryUrl);#}
+{#            $('#searchForm').attr('action', _this.attr('value'));#}
+{#        });#}
         $(document).on('click', '.has-sub', function () {
             var _this = $(this);
             if (!$(this).hasClass('expanded')) {
@@ -233,15 +261,20 @@
                     objWebsites['#' + v.category.sn] = '';
                 });
                 $.each(data, function (k, v) {
-                    let logoUrl = v.logo ? v.logo : "https://api.uixsj.cn/favicon/get.php?url=" + v.url;
+                    var logoUrl = v.logo ? v.logo : "https://api.uixsj.cn/favicon/get.php?url=" + v.url;
                     objWebsites['#' + v.category.sn] += '<div class="col-sm-3"><div class="xe-widget xe-conversations box2 label-info" onclick="window.open(\'' + v.url + '\', \'_blank\')" data-toggle="tooltip"data-placement="bottom" title="" data-original-title="' + v.url + '"><div class="xe-comment-entry"><a class="xe-user-img"><img src="' + logoUrl + '" class="img-responsive" width="40"></a><span class="label label-info" data-toggle="tooltip" data-placement="left" title=""data-original-title="Hello I am a Tooltip"></span><div class="xe-comment"><a href="#" class="xe-user-name overflowClip_1"><strong>' + v.name + '</strong></a><p class="overflowClip_2">' + v.desc + '</p></div></div></div></div>';
                 });
                 $.each(objWebsites, function (k, v) {
-                    $(k).html(v)
+                    $(k).html(v);
                 });
             }
         });
     }
+
+    <!--添加搜索功能-->
+    {#    function changeSearch() {#}
+    {#	    console.log($('searchType').radio());#}
+    {#    }#}
 
     var href = "";
     var pos = 0;
