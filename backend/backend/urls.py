@@ -20,7 +20,7 @@ import xadmin
 
 urlpatterns = [
     # xadmin
-    path('xadmin/', xadmin.site.urls),
-    path('', include('arsenal.urls')),
+    path('xadmin/', xadmin.site.urls, name='xadmin'),
+    path('', include('arsenal.urls'), name='index'),
     re_path(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
 ]

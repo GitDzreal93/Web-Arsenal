@@ -51,13 +51,13 @@
 				</div>
 			</header>
 			<ul id="main-menu" class="main-menu">
-				<div class="submit-tag">
-					<a href="{% url 'about' %}">
+				<li class="submit-tag">
+					<a href="#">
 						<i class="linecons-heart"></i>
-						<span class="tooltip-blue">关于本站</span>
+						<span class="tooltip-blue">我要推荐</span>
 						<span class="label label-Primary pull-right hidden-collapsed">♥︎</span>
 					</a>
-				</div>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -84,9 +84,6 @@
 					           data-placeholder="百度一下" data-key="wd"><label for="typeBaidu"><span class="btn btn-blue">百度</span></label></li>
 					<li><input hidden="" type="radio" name="type" id="typeGithub" value="https://github.com/search?"
 					           data-placeholder="Github 搜索" data-key="q"><label for="typeGithub"><span class="btn btn-primary">Github</span></label></li>
-					<li><input hidden="" type="radio" name="type" id="typeLinux"
-					           value="https://wangchujiang.com/linux-command/"
-					           data-placeholder="Linux 命令查询" data-key="#!kw"><label for="typeLinux"><span class="btn btn-default">Linux</span></label></li>
 					<li><input hidden="" type="radio" name="type" id="typeTestHome"
 					           value="https://testerhome.com/search"
 					           data-placeholder="TestHome 文章查询" data-key="q"><label for="typeTestHome"><span class="btn btn-gray">TestHome</span></label></li>
@@ -226,8 +223,8 @@
                 var linkFavicon = $('<link href="' + mainFavicon + '"rel="shortcut icon">');
                 $($('head')[0]).append(linkFavicon);
                 //添加侧边栏网站logo
-                var logoHtml = '<a href="index.html" class="logo-expanded"><img src="' + mainBigLogo + '" width="100%" alt="" />';
-                logoHtml += '<a href="index.html" class="logo-collapsed"><img src="' + mainMiniLogo + '" width="40" alt="" /></a>';
+                var logoHtml = '<a href="#" rel="go-top" class="logo-expanded" ><img src="' + mainBigLogo + '" width="100%" alt="" />';
+                logoHtml += '<a href="#" rel="go-top" class="logo-collapsed"><img src="' + mainMiniLogo + '" width="40" alt="" /></a>';
                 $(".logo").html(logoHtml);
             }
         });
@@ -247,7 +244,7 @@
                     categroryMenu += '<li><a href="#' + v.category + '" class="smooth"><i class="linecons-star"></i><span class="title">' + v.category + '</span></a></li>';
                     categroryTitle += '<h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="' + v.category + '"></i>' + v.category + '</h4><div id="' + v.sn + '" class="row"></div></br><hr>'
                 });
-                categroryMenu += '<li class="submit-tag"><a href=""><i class="linecons-heart"></i><span class="tooltip-blue hidden-collapsed">关于本站</span></a></li>';
+                categroryMenu += '<li class="submit-tag"><a href="xadmin" target="_blank"><i class="linecons-heart"></i><span class="tooltip-blue hidden-collapsed">我要推荐</span></a></li>';
                 $('#main-menu').html(categroryMenu);
                 $('#website').html(categroryTitle);
             }
