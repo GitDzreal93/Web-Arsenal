@@ -33,7 +33,7 @@ class CategoryViewset(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter,)
     filter_class = CategoryFilter
-    ordering_fields = ('weight')
+    ordering_fields = ('weight',)
 
 
 class WebsiteViewset(viewsets.ModelViewSet):

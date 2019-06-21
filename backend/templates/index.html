@@ -80,23 +80,31 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul id="searchType" class="left-links list-inline list-unstyled">
-					<li><input hidden="" type="radio" name="type" id="typeBaidu" value="https://www.baidu.com/s?wd="
-					           data-placeholder="百度一下"><label for="typeBaidu"><span
-							style="color:#116644">百度</span></label></li>
-					<li><input hidden="" type="radio" name="type" id="typeGithub" value="https://www.baidu.com/s?wd="
-					           data-placeholder="Github 搜索"><label for="typeGithub"><span
-							style="color:#116644">Github</span></label></li>
-					<li><input hidden="" type="radio" name="type" id="typeLinux" value="https://www.baidu.com/s?wd="
-					           data-placeholder="Linux 命令查询"><label for="typeLinux"><span
-							style="color:#116644">Linux</span></label></li>
+					<li><input hidden="" type="radio" name="type" id="typeBaidu" value="https://www.baidu.com/s"
+					           data-placeholder="百度一下" data-key="wd"><label for="typeBaidu"><span class="btn btn-blue">百度</span></label></li>
+					<li><input hidden="" type="radio" name="type" id="typeGithub" value="https://github.com/search?"
+					           data-placeholder="Github 搜索" data-key="q"><label for="typeGithub"><span class="btn btn-primary">Github</span></label></li>
+					<li><input hidden="" type="radio" name="type" id="typeLinux"
+					           value="https://wangchujiang.com/linux-command/"
+					           data-placeholder="Linux 命令查询" data-key="#!kw"><label for="typeLinux"><span class="btn btn-default">Linux</span></label></li>
+					<li><input hidden="" type="radio" name="type" id="typeTestHome"
+					           value="https://testerhome.com/search"
+					           data-placeholder="TestHome 文章查询" data-key="q"><label for="typeTestHome"><span class="btn btn-gray">TestHome</span></label></li>
+					<li><input hidden="" type="radio" name="type" id="typeCSDN"
+					           value="https://so.csdn.net/so/search/s.do"
+					           data-placeholder="CSDN 文章查询" data-key="q"><label for="typeCSDN"><span class="btn btn-red">CSDN</span></label></li>
+					<li><input hidden="" type="radio" name="type" id="typeZhihu" value="https://www.zhihu.com/search"
+					           data-placeholder="知乎文章 查询" data-key="q"><label for="typeZhihu"><span class="btn btn-info">知乎</span></label></li>
 				</ul>
 			</div>
 			<div class="col-md-6">
-				<form id="searchForm" method="get" action="" enctype="application/x-www-form-urlencoded"
+				<form id="searchForm" method="get" action="https://www.baidu.com/s"
+				      enctype="application/x-www-form-urlencoded"
 				      target="_blank">
 					<div class="input-group">
-						<input id="searchInput" type="text" class="form-control" placeholder="">
-						<span class="input-group-btn"><button id="searchButton" class="btn btn-primary" type="submit">搜索</button></span>
+						<input id="searchInput" type="text" class="form-control" name="wd" placeholder="百度一下">
+						<span class="input-group-btn"><button id="searchButton" class="btn btn-primary"
+						                                      type="submit">搜索</button></span>
 					</div>
 				</form>
 			</div>
@@ -118,9 +126,9 @@
 				<!--底部广告区域-->
 				<!-- Add your copyright text here -->
 				<div class="footer-text">
-					&copy; 2017
-					<a href="about.html"><strong>WebStack</strong></a> design by <a href="http://viggoz.com"
-					                                                                target="_blank"><strong>Viggo</strong></a>
+					&copy; 2019
+					<a href="about.html"> base <strong>WebStack</strong></a> design by <a href="http://viggoz.com"
+					                                                                      target="_blank"><strong>Dzreal</strong></a>
 					<!--  - Purchase for only <strong>23$</strong> -->
 				</div>
 				<!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
@@ -145,13 +153,11 @@
         $(document).on('click', '#searchType li input', function () {
             var _this = $(this);
             $('#searchForm').attr('action', _this.attr('value'));
-            $('#searchInput').attr('placeholder', _this.attr('data-placeholder'));
+            $('#searchInput').attr({
+                'placeholder': _this.attr('data-placeholder'),
+                'name': _this.attr('data-key')
+            })
         });
-{#        $(document).on('click', '#searchButton', function () {#}
-{#            var queryUrl = $('#searchForm').attr('action') + ;#}
-{#            $('#searchForm').attr('action', queryUrl);#}
-{#            $('#searchForm').attr('action', _this.attr('value'));#}
-{#        });#}
         $(document).on('click', '.has-sub', function () {
             var _this = $(this);
             if (!$(this).hasClass('expanded')) {
@@ -194,7 +200,8 @@
             });
         });
         return false;
-    });
+    })
+    ;
 
     function getWebConfig() {
         $.ajax({
@@ -230,7 +237,7 @@
     function getCategory() {
         $.ajax({
             type: "get",
-            url: "/api/v1/category/?is_running=2&is_show=2",
+            url: "/api/v1/category/?is_running=2&is_show=2&ordering=-weight",
             async: true,
             dataType: 'json',
             success: function (data) {
