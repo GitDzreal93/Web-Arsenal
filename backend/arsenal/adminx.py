@@ -32,18 +32,18 @@ class GlobalSettings(object):
 
 
 class WebConfigAdmin(object):
-    list_display = ['title', 'web_keywords', 'web_desc', 'main_mini_logo', 'main_big_logo', 'favicon', 'is_running']
-    search_fields = ['title', 'is_running']
-    list_filter = ['title', 'is_running']
+    list_display = ['id','title', 'web_keywords', 'web_desc', 'main_mini_logo', 'main_big_logo', 'favicon', 'is_running']
+    search_fields = ['id','title', 'is_running']
+    list_filter = ['id','title', 'is_running']
     list_editable = ['title', 'web_keywords', 'web_desc', 'main_mini_logo', 'main_big_logo', 'favicon', 'is_running']
     model_icon = 'fa fa-address-book-o'
 
 
 class CategoryAdmin(object):
-    list_display = ['id', 'sn', 'category', 'weight', 'is_show', 'webconfig']
-    search_fields = ['id', 'sn', 'category', 'weight', 'is_show', 'webconfig']
-    list_filter = ['id', 'sn', 'category', 'weight', 'is_show', 'webconfig']
-    list_editable = ['category', 'weight', 'is_show']
+    list_display = ['id', 'sn', 'category', 'weight', 'cat_is_show', 'webconfig']
+    search_fields = ['id', 'sn', 'category', 'weight', 'cat_is_show', 'webconfig']
+    list_filter = ['id', 'sn', 'category', 'weight', 'cat_is_show', 'webconfig']
+    list_editable = ['category', 'weight', 'cat_is_show']
     readonly_fields = ['sn']
     model_icon = 'fa fa-address-book-o'
 
@@ -53,10 +53,10 @@ class CategoryAdmin(object):
 
 
 class WebsiteAdmin(object):
-    list_display = ['id', 'name', 'desc', 'url', 'logo', 'category', 'add_time']
-    search_fields = ['id', 'name', 'category', 'url']
-    list_filter = ['id', 'name', 'category', 'url']
-    list_editable = ['name', 'desc', 'url', 'logo']
+    list_display = ['id', 'name', 'desc', 'url', 'logo', 'category', 'add_time','ws_is_show']
+    search_fields = ['id', 'name', 'category', 'url','ws_is_show']
+    list_filter = ['id', 'name', 'category', 'url','ws_is_show']
+    list_editable = ['name', 'desc', 'url', 'ws_is_show']
     model_icon = 'fa fa-address-book-o'
     relfield_style = 'fk-ajax'
 

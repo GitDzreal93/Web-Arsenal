@@ -141,6 +141,7 @@
 <!-- 锚点平滑移动 -->
 <script type="text/javascript">
     $(document).ready(function () {
+
         //获取网页全局配置
         getWebConfig();
         //获取可展示的分类
@@ -234,7 +235,7 @@
     function getCategory() {
         $.ajax({
             type: "get",
-            url: "/api/v1/category/?is_running=2&is_show=2&ordering=-weight",
+            url: "/api/v1/category/?is_running=2&cat_is_show=2&ordering=-weight",
             async: true,
             dataType: 'json',
             success: function (data) {
@@ -254,7 +255,7 @@
     function getWebsite() {
         $.ajax({
             type: "get",
-            url: "/api/v1/website/?is_running=2&is_show=2",
+            url: "/api/v1/website/?is_running=2&cat_is_show=2&ws_is_show=2",
             async: true,
             dataType: 'json',
             success: function (data) {

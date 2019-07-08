@@ -18,22 +18,25 @@ class CategoryFilter(django_filters.rest_framework.FilterSet):
     """
     过滤网站分类信息
     """
+    category = django_filters.CharFilter(field_name='category')
     is_running = django_filters.BooleanFilter(field_name='webconfig__is_running')
-    is_show = django_filters.BooleanFilter(field_name='is_show')
+    cat_is_show = django_filters.BooleanFilter(field_name='is_show')
 
     class Meta:
         model = Category
-        fields = ['is_show']
+        fields = ['cat_is_show']
 
 
 class WebsiteFilter(django_filters.rest_framework.FilterSet):
     """
     过滤网站信息
     """
-
+    category_id = django_filters.CharFilter(field_name='category__id')
+    webconfig_id = django_filters.NumberFilter(field_name='category__webconfig__id')
     is_running = django_filters.BooleanFilter(field_name='category__webconfig__is_running')
-    is_show = django_filters.BooleanFilter(field_name='category__is_show')
+    cat_is_show = django_filters.BooleanFilter(field_name='category__cat_is_show')
+    ws_is_show = django_filters.BooleanFilter(field_name='ws_is_show')
 
     class Meta:
         model = Website
-        fields = ['is_running', 'is_show']
+        fields = ['is_running', 'cat_is_show', 'ws_is_show','webconfig_id','category_id']
