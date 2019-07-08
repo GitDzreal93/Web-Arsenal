@@ -97,7 +97,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "arsenal",
-        'USER': 'root',
+        'USER': 'arsenal',
         'PASSWORD': "root",
         'HOST': "127.0.0.1"
     }
