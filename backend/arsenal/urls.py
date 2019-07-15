@@ -27,7 +27,16 @@ router.register('api/v1/website', WebsiteViewset, base_name="website_api")
 router.register('api/v1/webconfig', WebConfigViewset, base_name="webconfig_api")
 
 urlpatterns = [
-    path('', IndexView.as_view(), name='index'),
+    path('', PictureIndexView.as_view(), name='index_picture'),
+    path('picture', PictureIndexView.as_view(), name='index_picture'),
+    path('stock', StockIndexView.as_view(), name='index_stock'),
+    path('lawyer', LawyerIndexView.as_view(), name='index_lawyer'),
+    path('accounting', AccountingIndexView.as_view(), name='index_accounting'),
+    path('english', EnglishIndexView.as_view(), name='index_english'),
+    path('usa', USAIndexView.as_view(), name='index_usa'),
+    path('aus', AUSIndexView.as_view(), name='index_aus'),
+    path('uk', UKIndexView.as_view(), name='index_uk'),
+    path('can', CANIndexView.as_view(), name='index_can'),
     path('about/', AboutView.as_view(), name='about')
 ]
 

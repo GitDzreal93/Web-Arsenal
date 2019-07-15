@@ -56,7 +56,7 @@ class Website(models.Model):
     logo = models.ImageField(max_length=200, upload_to="logo", null=True, blank=True)
     category = models.ForeignKey(Category, related_name="website_category", on_delete=models.CASCADE,
                                  verbose_name="类别", help_text="类别")
-    ws_is_show = models.BooleanField(default=False, verbose_name="首页展示", help_text="网站需要首页展示")
+    ws_is_show = models.BooleanField(default=True, verbose_name="首页展示", help_text="网站需要首页展示")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
 
     def __str__(self):

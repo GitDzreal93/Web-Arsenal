@@ -72,6 +72,53 @@
 					</a>
 				</li>
 			</ul>
+			<ul class="user-info-menu list-inline list-unstyled sticky-top">
+				<li>
+					<a href="{% url  'index_picture' %}" target="_blank">
+						改图工具箱
+					</a>
+				</li>
+				<li>
+					<a href="{% url  'index_stock' %}" target="_blank">
+						炒股常用网站
+					</a>
+				</li>
+				<li>
+					<a href="{% url  'index_lawyer' %}" target="_blank">
+						律师常用网站
+					</a>
+				</li>
+				<li>
+					<a href="{% url  'index_accounting' %}" target="_blank">
+						会计常用网站
+					</a>
+				</li>
+				<li>
+					<a href="{% url  'index_english' %}" target="_blank">
+						学英语常用网站
+					</a>
+				</li>
+				<li>
+					<a href="{% url  'index_usa' %}" target="_blank">
+						美国留学生常用网站
+					</a>
+				</li>
+				<li>
+					<a href="{% url  'index_aus' %}" target="_blank" >
+						澳洲留学生常用网站
+					</a>
+				</li>
+				{#				<li>#}
+				{#					<a href="{% url  'index_uk' %}" >#}
+				{#						英国留学生常用网站#}
+				{#					</a>#}
+				{#				</li>#}
+				{#				<li>#}
+				{#					<a href="{% url  'index_can' %}" >#}
+				{#						加拿大留学生常用网站#}
+				{#					</a>#}
+				{#				</li>#}
+			</ul>
 			{#			<a href="https://github.com/WebStackPage/WebStackPage.github.io" target="_blank"><img#}
 			{#					style="position: absolute; top: 0; right: 0; border: 0;"#}
 			{#					src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="GitHub"></a>#}
@@ -81,17 +128,22 @@
 			<div class="col-md-12">
 				<ul id="searchType" class="left-links list-inline list-unstyled">
 					<li><input hidden="" type="radio" name="type" id="typeBaidu" value="https://www.baidu.com/s"
-					           data-placeholder="百度一下" data-key="wd"><label for="typeBaidu"><span class="btn btn-blue">百度</span></label></li>
+					           data-placeholder="百度一下" data-key="wd"><label for="typeBaidu"><span class="btn btn-blue">百度</span></label>
+					</li>
 					<li><input hidden="" type="radio" name="type" id="typeGithub" value="https://github.com/search?"
-					           data-placeholder="Github 搜索" data-key="q"><label for="typeGithub"><span class="btn btn-primary">Github</span></label></li>
+					           data-placeholder="Github 搜索" data-key="q"><label for="typeGithub"><span
+							class="btn btn-primary">Github</span></label></li>
 					<li><input hidden="" type="radio" name="type" id="typeTestHome"
 					           value="https://testerhome.com/search"
-					           data-placeholder="TestHome 文章查询" data-key="q"><label for="typeTestHome"><span class="btn btn-gray">TestHome</span></label></li>
+					           data-placeholder="TestHome 文章查询" data-key="q"><label for="typeTestHome"><span
+							class="btn btn-gray">TestHome</span></label></li>
 					<li><input hidden="" type="radio" name="type" id="typeCSDN"
 					           value="https://so.csdn.net/so/search/s.do"
-					           data-placeholder="CSDN 文章查询" data-key="q"><label for="typeCSDN"><span class="btn btn-red">CSDN</span></label></li>
+					           data-placeholder="CSDN 文章查询" data-key="q"><label for="typeCSDN"><span
+							class="btn btn-red">CSDN</span></label></li>
 					<li><input hidden="" type="radio" name="type" id="typeZhihu" value="https://www.zhihu.com/search"
-					           data-placeholder="知乎文章 查询" data-key="q"><label for="typeZhihu"><span class="btn btn-info">知乎</span></label></li>
+					           data-placeholder="知乎文章 查询" data-key="q"><label for="typeZhihu"><span
+							class="btn btn-info">知乎</span></label></li>
 				</ul>
 			</div>
 			<div class="col-md-6">
@@ -142,12 +194,18 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        //获取网页全局配置
-        getWebConfig();
-        //获取可展示的分类
-        getCategory();
-        //获取可展示的网站
-        getWebsite();
+        // webConfigId = 1 改图工具箱
+        // webConfigId = 2 投资理财常用网站
+        // webConfigId = 3 律师常用网站
+        // webConfigId = 4 会计常用网站
+        // webConfigId = 5 学英语常用网站
+        // webConfigId = 6 美国留学生常用网站
+        // webConfigId = 7 澳洲留学生常用网站
+        // webConfigId = 8 英国留学生常用网站
+        // webConfigId = 9 加拿大留学生常用网站
+        var webconfigId = 2;
+        initPage(webconfigId);
+
         $(document).on('click', '#searchType li input', function () {
             var _this = $(this);
             $('#searchForm').attr('action', _this.attr('value'));
@@ -200,11 +258,11 @@
         return false;
     })
     ;
-
-    function getWebConfig() {
+	// 改图网
+    function getWebConfig(webConfigId) {
         $.ajax({
             type: "get",
-            url: "/api/v1/webconfig/?is_running=2",
+            url: "/api/v1/webconfig/?is_running=2&webconfig_id=" + webConfigId,
             async: true,
             dataType: 'json',
             success: function (data) {
@@ -214,6 +272,7 @@
                 var mainFavicon = data[0].favicon;
                 var mainDesc = data[0].web_desc;
                 var mainKw = data[0].web_keywords;
+                webConfigId = data[0].id;
                 //添加网站标题
                 $("title").html(mainTitle);
                 //添加网站搜索关键字
@@ -232,10 +291,10 @@
     }
 
 
-    function getCategory() {
+    function getCategory(webConfigId) {
         $.ajax({
             type: "get",
-            url: "/api/v1/category/?is_running=2&cat_is_show=2&ordering=-weight",
+            url: "/api/v1/category/?is_running=2&cat_is_show=2&ordering=-weight&webconfig_id=" + webConfigId,
             async: true,
             dataType: 'json',
             success: function (data) {
@@ -252,10 +311,10 @@
         });
     }
 
-    function getWebsite() {
+    function getWebsite(webConfigId) {
         $.ajax({
             type: "get",
-            url: "/api/v1/website/?is_running=2&cat_is_show=2&ws_is_show=2",
+            url: "/api/v1/website/?is_running=2&cat_is_show=2&ws_is_show=2&webconfig_id=" + webConfigId,
             async: true,
             dataType: 'json',
             success: function (data) {
@@ -276,6 +335,14 @@
         });
     }
 
+    function initPage(webConfigId) {
+        //获取网页全局配置
+        getWebConfig(webConfigId);
+        //获取可展示的分类
+        getCategory(webConfigId);
+        //获取网址
+        getWebsite(webConfigId);
+    }
     <!--添加搜索功能-->
     {#    function changeSearch() {#}
     {#	    console.log($('searchType').radio());#}
