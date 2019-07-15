@@ -46,10 +46,51 @@ class WebsiteViewset(viewsets.ModelViewSet):
     filter_class = WebsiteFilter
 
 
-class IndexView(View):
+# 改图工具箱
+class PictureIndexView(View):
     def get(self, request):
-        return render(request, "index.html")
+        return render(request, "index_pic.html")
 
+# 炒股常用网站
+class StockIndexView(View):
+    def get(self, request):
+        return render(request, "index_stock.html")
+
+# 律师常用网站
+class LawyerIndexView(View):
+    def get(self, request):
+        return render(request, "index_lawyer.html")
+
+
+# 会计常用网站
+class AccountingIndexView(View):
+    def get(self, request):
+        return render(request, "index_accounting.html")
+
+# 学英语常用网站
+class EnglishIndexView(View):
+    def get(self, request):
+        return render(request, "index_english.html")
+
+# 美国留学生常用网站
+class USAIndexView(View):
+    def get(self, request):
+        return render(request, "index_usa.html")
+
+# 澳大利亚留学生常用网站
+class AUSIndexView(View):
+    def get(self, request):
+        return render(request, "index_aus.html")
+
+# 英国留学生常用网站
+class UKIndexView(View):
+    def get(self, request):
+        return render(request, "index_uk.html")
+
+# 加拿大留学生常用网站
+class CANIndexView(View):
+    def get(self, request):
+        return render(request, "index_can.html")
 
 class AboutView(View):
     def get(self, request):
