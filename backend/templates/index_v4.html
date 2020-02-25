@@ -265,7 +265,7 @@
                     categroryMenu += '<li><a href="#' + v.category + '" class="smooth"><i class="linecons-star"></i><span class="title">' + v.category + '</span></a></li>';
                     categroryTitle += '<h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="' + v.category + '"></i>' + v.category + '</h4><div id="' + v.sn + '" class="row"></div></br><hr>'
                 });
-                categroryMenu += '<li class="submit-tag"><a href="xadmin" target="_blank"><i class="linecons-heart"></i><span class="tooltip-blue hidden-collapsed">我要推荐</span></a></li>';
+                {#categroryMenu += '<li class="submit-tag"><a href="xadmin" target="_blank"><i class="linecons-heart"></i><span class="tooltip-blue hidden-collapsed">我要推荐</span></a></li>';#}
                 $('#main-menu').html(categroryMenu);
                 $('#website').html(categroryTitle);
             }
