@@ -28,7 +28,7 @@ router.register('api/v1/webconfig', WebConfigViewset, base_name="webconfig_api")
 
 urlpatterns = [
     path('', PictureIndexView.as_view(), name='index_up'),
-    path('up', PictureIndexView.as_view(), name='index_up'),
+    path('up', UpIndexView.as_view(), name='index_up'),
     path('picture', PictureIndexView.as_view(), name='index_picture'),
     path('stock', StockIndexView.as_view(), name='index_stock'),
     path('lawyer', LawyerIndexView.as_view(), name='index_lawyer'),

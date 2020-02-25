@@ -47,7 +47,7 @@ class WebsiteViewset(viewsets.ModelViewSet):
 
 
 # up主常关注的
-class PictureIndexView(View):
+class UpIndexView(View):
     def get(self, request):
         return render(request, "index_v4.html")
 
