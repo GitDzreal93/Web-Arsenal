@@ -46,6 +46,11 @@ class WebsiteViewset(viewsets.ModelViewSet):
     filter_class = WebsiteFilter
 
 
+# up主常关注的
+class PictureIndexView(View):
+    def get(self, request):
+        return render(request, "index_v4.html")
+
 # 改图工具箱
 class PictureIndexView(View):
     def get(self, request):
