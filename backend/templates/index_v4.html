@@ -287,6 +287,7 @@
                 });
                 $.each(data, function (k, v) {
                     var logoUrl = v.logo ? v.logo : "https://api.uixsj.cn/favicon/get.php?url=" + v.url;
+                    logoUrl = logoUrl ? logoUrl : "http://nav.tencentgg.cn/media/logo/defaut.png";
                     objWebsites['#' + v.category.sn] += '<div class="col-sm-3"><div class="xe-widget xe-conversations box2 label-info" onclick="window.open(\'' + v.url + '\', \'_blank\')" data-toggle="tooltip"data-placement="bottom" title="" data-original-title="' + v.url + '"><div class="xe-comment-entry"><a class="xe-user-img"><img src="' + logoUrl + '" class="img-responsive" width="40"></a><span class="label label-info" data-toggle="tooltip" data-placement="left" title=""data-original-title="Hello I am a Tooltip"></span><div class="xe-comment"><a href="#" class="xe-user-name overflowClip_1"><strong>' + v.name + '</strong></a><p class="overflowClip_2">' + v.desc + '</p></div></div></div></div>';
                 });
                 $.each(objWebsites, function (k, v) {
